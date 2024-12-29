@@ -23,6 +23,9 @@ This project was designed and tested using c11.
 ## Files
 
 blackjack.h: Declarations for blackjack.c
+
 blackjack.c: Contains the functions for the game logic.
+
 playbj.c: Contains the main function, which plays the game.
+
 Makefile: Contains build instructions for the project.
