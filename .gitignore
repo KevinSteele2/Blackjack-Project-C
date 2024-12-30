@@ -1,0 +1,9 @@
+*.o
+*.exe
+/build/
+bin/
+obj/
+.vscode/
+.DS_Store
+Thumbs.db
+playbj
