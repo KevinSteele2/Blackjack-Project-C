@@ -6,18 +6,8 @@
 #include <ctype.h>
 #include "blackjack.h"
 
-int main(){
-    printf("Welcome to Blackjack\nHere is how to play:\n");
-    printf("You will be dealt two cards, and the dealer will be dealt two cards.\n");
-    printf("The goal is to get closer to 21 than the dealer, without going over.\n");
-    printf("If you go over 21, you bust and lose the game.\n");
-    printf("At the start, you will be asked if you want to hit or stand.\n");
-    printf("If you hit, you will be dealt another card.\n");
-    printf("If you stand, you will keep your current hand, and the dealer will go.\n");
-    printf("The dealer will hit until they reach 17 or higher.\n");
-    printf("When it is your turn, type either \"hit\" or \"stand.\"\n");
-    printf("Good luck!\n\n");
 
+int play_blackjack(){
 // Setup
     char input[10];
     Deck deck;
@@ -68,11 +58,11 @@ int main(){
     }
 
 // Dealer's turn
+    printf("\n");
+    print_hand(&dealer, 2);
     while(1){
         Sleep(1000);
         dealer_total = calculate_hand(&dealer);
-        printf("\n");
-        print_hand(&dealer, 2);
         if (player_total > 21) {
             break;
         }
@@ -98,9 +88,39 @@ int main(){
     }
 
 
-
     for(int i = 0; i < 52; i++){
         free(deck.deck[i]);
     }
     return 0;
+}
+int main(){
+    printf("Welcome to Blackjack\nHere is how to play:\n");
+    printf("You will be dealt two cards, and the dealer will be dealt two cards.\n");
+    printf("The goal is to get closer to 21 than the dealer, without going over.\n");
+    printf("If you go over 21, you bust and lose the game.\n");
+    printf("At the start, you will be asked if you want to hit or stand.\n");
+    printf("If you hit, you will be dealt another card.\n");
+    printf("If you stand, you will keep your current hand, and the dealer will go.\n");
+    printf("The dealer will hit until they reach 17 or higher.\n");
+    printf("When it is your turn, type either \"hit\" or \"stand.\"\n");
+    printf("Good luck!\n\n");
+
+    play_blackjack();
+    int play = 0;
+    char input[10];
+    while(play == 0) {
+        printf("Do you want to play again? (yes or no) \n");
+        scanf("%s", input);
+        for (int i = 0; input[i]; i++) {
+            input[i] = tolower(input[i]);
+        }
+        if (strcmp(input, "yes") == 0) {
+            printf("\n");
+            play_blackjack();
+        } else if (strcmp(input, "no") == 0) {
+            break;
+        } else {
+            printf("Invalid input. Please type \"yes\" or \"no.\"\n");
+        }
+    }
 }
