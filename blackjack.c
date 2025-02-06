@@ -92,17 +92,23 @@ void print_hand(Hand *hand, int dealer){
 }
 
 int calculate_hand(Hand *hand){
-    int i, total = 0;
+    int i, total = 0, aces = 0;
     for(i = 0; i < hand->num_cards; i++){
         if(hand->cards[i].rank == 12 && total + 11 <= 21){
             total += 11;
-        }else if(hand->cards[i].rank == 12){
-            total += 1;
+            aces++;
         }else if(hand->cards[i].rank > 8){
             total += 10;
         }else{
             total += hand->cards[i].rank + 2;
         }
     }
+
+    // Adjust for aces
+    while(total > 21 && aces > 0){
+        total -= 10;
+        aces--;
+    }
+    
     return total;
 }
