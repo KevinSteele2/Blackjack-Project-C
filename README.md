@@ -10,9 +10,9 @@ The goal is to get closer to 21 than the dealer without going over. You input ei
 
 ## Building the project
 
-To build the project, you must have GCC installed on your system. Then, you can use the provided makefile to compile. The name of the executable will be 'playbj'.
+To build the project, you must have GCC installed on your system. Navigate to the directory you have the project downloaded in. Then, you can use the provided makefile to compile, just type 'make' into the terminal. The name of the executable will be 'playbj' or 'playbj.exe'.
 
-To run it, use the following command: './playbj'
+To run it, use the following command: './playbj' or './playbj.exe'.
 
  
 ## Details
